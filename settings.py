@@ -18,6 +18,18 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'otree',
+        'USER': 'postgres',
+        'PASSWORD': 'mypassword',
+        'HOST': 'localhost',  # or the hostname of your PostgreSQL container
+        'PORT': '5432',
+    }
+}
+
+
 PARTICIPANT_FIELDS = []
 SESSION_FIELDS = []
 

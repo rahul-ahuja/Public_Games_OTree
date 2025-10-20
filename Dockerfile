@@ -2,7 +2,7 @@
 FROM postgres:15
 
 # Set environment variables for database setup
-#ENV POSTGRES_DB=otree
+ENV POSTGRES_DB=otree
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=mypassword
 
