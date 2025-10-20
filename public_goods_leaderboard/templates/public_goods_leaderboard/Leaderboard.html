@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h3>Leaderboard - Round {{ player.round_number }}</h3>
+<table class="table" id="leaderboard-table">
+    <thead>
+        <tr>
+            <th>Participant</th>
+            <th>Contribution</th>
+        </tr>
+    </thead>
+    <tbody id="leaderboard-body">
+        {% for member in leaderboard %}
+            <tr {% if member.is_own_group %} style="background-color: #dff0d8;" {% endif %}>
+                <td>Participant {{ member.player_id }} {% if member.is_self %}(You){% endif %}</td>
+                <td>{{ member.contribution }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{{ next_button }}
+
+<script>
+function updateLeaderboard() {
+    fetch(window.location.href)
+        .then(response => response.text())
+        .then(html => {
+            // Parse the returned HTML string
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+
+            // Extract the tbody from the fetched page
+            const newTbody = doc.querySelector("#leaderboard-body");
+
+            // Replace current tbody with the new one
+            const oldTbody = document.querySelector("#leaderboard-body");
+            if (newTbody && oldTbody) {
+                oldTbody.innerHTML = newTbody.innerHTML;
+            }
+        })
+        .catch(err => console.error("Error refreshing leaderboard:", err));
+}
+
+// Auto-refresh every 15 seconds (adjust timing as needed)
+setInterval(updateLeaderboard, 15000);
+</script>
+
+{% endblock %}

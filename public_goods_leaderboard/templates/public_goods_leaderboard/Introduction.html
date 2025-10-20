@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h3>Welcome to the Public Goods Game</h3>
+<p>
+    In this experiment, you will be placed in a group of 3 participants. Each round, you will receive an endowment of {{ C.ENDOWMENT }} points.
+</p>
+<p>
+    You can choose how much of your endowment to contribute to a group project. The total contributions will be multiplied by {{ C.MULTIPLIER }} and then divided equally among the group members.
+</p>
+<p>
+    You will not be matched with the same person in every round. Your group will change each round.
+</p>
+<p>
+    There are {{ C.NUM_ROUNDS }} rounds in total. After each round, you will see a leaderboard showing the contributions of all participants.
+</p>
+<p>
+    Click "Next" to begin.
+</p>
+<!--  number of group members should be 3 instead of 2 as per the email -->
+{{next_button}}
+
+{% endblock %}

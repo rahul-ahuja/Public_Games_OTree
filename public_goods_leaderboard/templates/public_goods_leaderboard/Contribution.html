@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h3>Round {{ player.round_number }}</h3>
+<p>
+    You have {{ C.ENDOWMENT }} points. How much would you like to contribute to the group project?
+</p>
+
+{{ formfields }}
+
+<p>
+    The amount you do not contribute will remain with you.
+</p>
+
+{{next_button}}
+
+{% endblock %}

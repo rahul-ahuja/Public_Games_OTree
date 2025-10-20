@@ -1,0 +1,8 @@
+# oTree-may-overwrite-this-file
+# IF YOU MODIFY THIS FILE, remove this comment.
+# otherwise, oTree will automatically overwrite it.
+otree==5.11.3
+psycopg2-binary
+uvicorn
+requests
+ws4py

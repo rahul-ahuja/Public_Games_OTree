@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h3>Results - Round {{ player.round_number }}</h3>
+<p>
+    Total contribution by your group: <strong>{{ total_contribution }}</strong><br>
+    Each group member receives: <strong>{{ individual_share }}</strong><br>
+    Your payoff this round: <strong>{{ payoff }}</strong>
+</p>
+<p>
+    Click "Next" to see the leaderboard.
+</p>
+
+{{ next_button }}
+
+{% endblock %}
