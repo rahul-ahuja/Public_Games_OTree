@@ -1,37 +1,27 @@
-version: '3.8'
+version: '3'
 services:
   db:
-    image: postgres:15
+    image: postgres:latest
     environment:
       POSTGRES_DB: otree
       POSTGRES_USER: otreeuser
       POSTGRES_PASSWORD: otreepass
     ports:
       - "5432:5432"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U otreeuser"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile.web
-    # wait for db to accept connections, then run migrations and start server
+    build: .
     command: >
-      sh -c "until nc -z db 5432; do echo 'waiting for db'; sleep 1; done;
-             otree migrate &&
-             otree runprodserver"
+      sh -c "otree runprodserver"
     volumes:
       - .:/app
     ports:
       - "8000:8000"
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     environment:
-      OTREE_DB_HOST: db
-      OTREE_DB_NAME: otree
-      OTREE_DB_USER: otreeuser
-      OTREE_DB_PASSWORD: otreepass
+      OTREE_PRODUCTION: 'true'
+      DATABASE_URL: postgres://otreeuser:otreepass@db:5432/otree
+    restart: on-failure
+
+# To run the application using Docker Compose, use the command:
+# docker-compose up --build 

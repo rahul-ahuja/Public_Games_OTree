@@ -1,13 +1,12 @@
 # Use the official PostgreSQL image as a base
-FROM postgres:15
+FROM python:3.12-slim
 
-# Set environment variables for database setup
-ENV POSTGRES_DB=otree
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=mypassword
+COPY . /app
 
-# Optional: copy initialization SQL scripts (executed automatically)
-# COPY init.sql /docker-entrypoint-initdb.d/
+WORKDIR /app
 
-# Expose PostgreSQL default port
-EXPOSE 5432
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8000
+
+CMD otree prodserver

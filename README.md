@@ -6,6 +6,12 @@ This is an extension of the public goods game in OTree https://otree.readthedocs
 In this modified public goods game, there can be any multiple number of players.
 
 
+# Option 1
+
+## Setup and run the Application
+`docker compose up --build`
+
+# Option 2
 ## Instructions to setup the application
 
 ```
