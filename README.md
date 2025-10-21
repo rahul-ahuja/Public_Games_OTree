@@ -6,29 +6,5 @@ This is an extension of the public goods game in OTree https://otree.readthedocs
 In this modified public goods game, there can be any multiple number of players.
 
 
-# Option 1
-
 ## Setup and run the Application
 `docker compose up --build`
-
-# Option 2
-## Instructions to setup the application
-
-```
-pip install -r requirements.txt
-
-docker build . -t otree_db
-docker run --name otree-postgres -p 5432:5432 -d otree_db
-export DATABASE_URL=postgresql://postgres:mypassword@localhost:5432/otree
-otree resetdb
-```
-
-## Instructions to run the application
-
-```
-otree devserver 
-# the app running on 127.0.0.1:8000
-
-otree runprodserver # to run in the production environment 
-# the app running on http://0.0.0.0:8000/
-```
