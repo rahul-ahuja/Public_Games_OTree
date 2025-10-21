@@ -1,12 +1,12 @@
 # Modified Public Game in OTree
 
-# Overview
+## Overview
 
 This is an extension of the public goods game in OTree https://otree.readthedocs.io/en/latest/tutorial/part2.html
 In this modified public goods game, there can be any multiple number of players.
 
 
-# Instructions to setup the application and PostgreSQL database from Docker. Below are commands to be executed in the terminal
+## Instructions to setup the application
 
 ```
 pip install -r requirements.txt
@@ -17,12 +17,12 @@ export DATABASE_URL=postgresql://postgres:mypassword@localhost:5432/otree
 otree resetdb
 ```
 
-# Instructions to run the application
+## Instructions to run the application
 
 ```
 otree devserver 
-127.0.0.1:8000
+# the app running on 127.0.0.1:8000
 
 otree runprodserver # to run in the production environment 
-http://0.0.0.0:8000/
+# the app running on http://0.0.0.0:8000/
 ```
