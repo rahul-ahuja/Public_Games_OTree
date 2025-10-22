@@ -1,5 +1,15 @@
-version: '3'
 services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
+    networks:
+      - otree_network
+
   db:
     image: postgres:latest
     environment:
@@ -8,6 +18,9 @@ services:
       POSTGRES_PASSWORD: otreepass
     ports:
       - "5432:5432"
+    networks:
+      - otree_network
+
   web:
     build: .
     command: >
@@ -22,6 +35,12 @@ services:
       OTREE_PRODUCTION: 'true'
       DATABASE_URL: postgres://otreeuser:otreepass@db:5432/otree
     restart: on-failure
+    networks:
+      - otree_network
+
+networks:
+  otree_network:
+    driver: bridge
 
 # To run the application using Docker Compose, use the command:
-# docker-compose up --build 
+# docker compose up --build 
