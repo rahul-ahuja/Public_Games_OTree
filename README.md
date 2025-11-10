@@ -9,4 +9,5 @@ The motivation behind this project is to examine how coordination works among th
 
 ## Setup and run the Application
 `docker compose up --build` #if building from the image
+
 `docker compose up` #if restarting the containers in the service
